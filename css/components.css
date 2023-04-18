@@ -198,7 +198,7 @@
 /* ------------------------- Single - Vimeo Player -------------------------------------------------- */
 
 .single-vimeo-player {
-   --aspect-ratio: 66.66%;
+   --aspect-ratio: 56.25%%;
 	position: relative;
 	width: 100%;
 	padding-bottom: var(--aspect-ratio);
@@ -535,10 +535,19 @@
 
 
 /* ------------------------- Thumb -------------------------------------------------- */
-
 .thumb {
    position: relative;
    width: 100%;
+   --thumb-border-radius: calc(var(--border-radius) * 0.5);
+   border-radius: var(--thumb-border-radius);
+   overflow: hidden;
+   transform: translateZ(0);
+   isolation: isolate;
+}
+.thumb2 {
+   position: relative;
+   width: 30vw;
+   height: 42.9vw;
    --thumb-border-radius: calc(var(--border-radius) * 0.5);
    border-radius: var(--thumb-border-radius);
    overflow: hidden;
@@ -635,7 +644,7 @@
 }
 
 .single-work-item .thumb {
-   margin-bottom: -2.917vw
+   margin-bottom: -5.917vw
 }
 
 .single-work-item .tags {

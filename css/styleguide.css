@@ -758,7 +758,23 @@ main.touch .main-wrap {
 .prosto-podwin{
    position: relative;
    z-index: 100;
-   top: -2.5em;
+   bottom: 2.5em;
+   left: 0.5em;
+   /* height: calc(4.5*var(--section-padding-small)); */
+   
+}
+.prosto-podwin2{
+   position: relative;
+   z-index: 100;
+   bottom: 1.5em;
+   left: 0.5em;
+   /* height: calc(4.5*var(--section-padding-small)); */
+   
+}
+.prosto-podwin3{
+   position: relative;
+   z-index: 100;
+   bottom: 3.5em;
    left: 0.5em;
    /* height: calc(4.5*var(--section-padding-small)); */
    

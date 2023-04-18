@@ -1718,7 +1718,7 @@ footer .logo svg {
 
 @media screen and (max-width: 1024px) {
    .grid-work ul {
-      --columns: 2;
+      --columns: 3;
    }
 
    .grid-work ul.medium {
@@ -1728,7 +1728,7 @@ footer .logo svg {
 
 @media screen and (max-width: 720px) {
    .grid-work ul {
-      --columns: 1;
+      --columns: 3;
    }
 
    .grid-work ul.medium {
