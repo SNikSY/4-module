@@ -1117,7 +1117,7 @@ figure.single-image{
 figure.single-image .image-box {
    position: relative;
    overflow: hidden;
-   border-radius: calc(var(--border-radius) * 0.5);
+   border-radius: calc(var(--border-radius) * 1);
    width: 100%;
    transform: translateZ(0);
    isolation: isolate;
@@ -1302,15 +1302,39 @@ figure.single-image img {
    --gap: var(--gap-padding);
    --columns: 3;
 }
-
-.single-flickity-slider .flickity-carousel .flickity-slide {
+.flickity-viewport {
+   height: 42vw;
+}
+.single-flickity-slider .flickity-carousel {
    width: calc((99.999% / var(--columns)) - (var(--gap) * ((var(--columns) - 1) / var(--columns))));
    margin-right: var(--gap);
    flex-shrink: 0;
 }
-
-.single-flickity-slider .flickity-carousel .flickity-slide:last-child {
-   margin-right: 0;
+.flickity-slide{
+   margin-right: var(--gap);
+   flex-shrink: 0;
+}
+.flickity-long{
+   width: 47.5vw;
+}
+.flickity-mid{
+   width: 33.8vw;
+}
+@media screen and (max-width: 1024px){
+   .flickity-long{
+      width: 60vw;
+   }
+   .flickity-mid{
+      width: 42vw;
+   }
+   .flickity-short{
+      width: 33.8vw;
+   }
+}
+@media screen and (max-width: 540px){
+   .flickity-short{
+      width: 33.8vw;
+   }
 }
 
 .single-flickity-slider .flickity-carousel .flickity-viewport {
