@@ -1731,9 +1731,13 @@ footer .logo svg {
 
 .grid-work ul li {
    width: calc((99.999% / var(--columns)) - (var(--gap) * ((var(--columns) - 1) / var(--columns))));
-   height: auto
+   height: 45.2vw
 }
-
+@media screen and (max-width: 720px) {
+   .grid-work ul li {
+      height: 93vw
+   }
+}
 /* Grid Medium */
 
 .grid-work ul.medium {
@@ -4034,7 +4038,7 @@ main.animate-css .about-header .word-icon .animation-arrow .arrow {
 }
 
 .responsibility-progress .row-intro ul li p span:nth-child(1) {
-   min-width: 5em;
+   min-width: 2em;
    opacity: 0.66;
 }
 
@@ -4091,7 +4095,7 @@ main.animate-css .about-header .word-icon .animation-arrow .arrow {
 
    .responsibility-grid {
       grid-template-columns: repeat(4, 1fr);
-      grid-template-rows: repeat(9, 1fr);
+      grid-template-rows: repeat(8, 1fr);
       gap: calc(var(--container-padding) * 0.5);
    }
 
@@ -4324,7 +4328,7 @@ main.animate-css .about-header .word-icon .animation-arrow .arrow {
 
 #responsibility .footer.theme-dark,
 #responsibility .footer.theme-dark::after {
-   background: #283e31;
+   background: #3a39a0;
 }
 
 @media screen and (max-width: 1024px) {

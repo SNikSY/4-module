@@ -29,7 +29,9 @@
    -ms-hyphens: auto;
    hyphens: auto;
 }
-
+.frame{
+   height: 45vw;
+}
 /* ------------------------- Split Words -------------------------------------------------- */
 
 .split-words-wrap .single-word {
@@ -1102,6 +1104,7 @@
    display: flex;
    flex-direction: column;
    gap: var(--section-padding-small);
+   justify-content: space-between;
 }
 
 .single-layout figure, 
