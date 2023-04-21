@@ -1323,6 +1323,9 @@ figure.single-image img {
 .flickity-mid{
    width: 33.8vw;
 }
+.flickity-book {
+   width: 53.4vw;
+}
 @media screen and (max-width: 1024px){
    .flickity-long{
       width: 60vw;
@@ -1332,6 +1335,9 @@ figure.single-image img {
    }
    .flickity-short{
       width: 33.8vw;
+   }
+   .flickity-book{
+      width: 68vw;
    }
 }
 @media screen and (max-width: 540px){
