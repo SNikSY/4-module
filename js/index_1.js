@@ -389,7 +389,7 @@ function initPageTransitions() {
          from: {
          },
          to: {
-            namespace: ['responsibility', 'contact', 'textpage', 'styleguide', 'news', 'news-single']
+            namespace: ['station2', 'shuttle', 'whywego', 'book', 'news', 'start-mission', 'form', 'shop', 'odnom-nomer', 'home']
          },
          once(data) {
             initSmoothScroll(data.next.container);
