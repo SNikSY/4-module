@@ -25,6 +25,10 @@
    -webkit-border-radius: calc(var(--border-radius) * 2);
 }
 
+
+
+
+
 .loading-fade {
    position: absolute;
    top: 0;
@@ -976,6 +980,10 @@ nav.theme-nav-light .ul-mobile li.active a > span::before,
 nav.theme-nav-transitioning .ul-mobile li.active a > span::before {
    background-color: var(--color-light); 
 }
+
+
+
+
 
 @media (hover: hover) {
    nav .ul-mobile:hover li a > span::before {
