@@ -22,7 +22,6 @@ function initLoaderShort() {
    }, null, 0);	
 }
 
-// Animation - First Page Load
 function initLoader() { 
 
    var tl = gsap.timeline();
@@ -152,23 +151,17 @@ function initLoader() {
 
 
 }
-
-// Animation - Page transition In Dark
 function pageTransitionInDark() {
  
    pageTransitionIn();
  
 }
-
-// Animation - Page transition In Light
 function pageTransitionInLight() {
  
    pageTransitionIn();
  
 }
 
-
-// Animation - Page transition In
 function pageTransitionIn() {
 	var tl = gsap.timeline();
 
@@ -268,8 +261,6 @@ function pageTransitionIn() {
    
 }
 
-
-// Animation - Page transition Out
 function pageTransitionOut() {
 	var tl = gsap.timeline();
   
@@ -351,25 +342,20 @@ function pageTransitionOut() {
 
 function initPageTransitions() {
 
-   // do something before the transition starts
    barba.hooks.before(() => {
       select('html').classList.add('is-transitioning');
    });
 
-   // do something after the transition finishes
    barba.hooks.after(() => {
       select('html').classList.remove('is-transitioning');
-      // reinit locomotive scroll
       scroll.init();
       scroll.stop();
    });
 
-   // scroll to the top of the page
    barba.hooks.enter(() => {
       scroll.destroy();
    });
 
-   // scroll to the top of the page
    barba.hooks.afterEnter(() => {
       window.scrollTo(0, 0);
    });
@@ -397,7 +383,6 @@ function initPageTransitions() {
             initLoader();
          },
          async leave(data) {
-            // animate loading screen in
             pageTransitionInLight(data.current);
             await delay(600);
             $("main, nav").removeClass('theme-nav-dark');
@@ -405,7 +390,6 @@ function initPageTransitions() {
             data.current.container.remove();
          },
          async enter(data) {
-            // animate loading screen away
             pageTransitionOut(data.next);
             initBarbaNavUpdate(data);
             initNextWord(data);
@@ -420,13 +404,11 @@ function initPageTransitions() {
       {
       name: 'default',
       once(data) {
-         // do something once on the initial page load
          initSmoothScroll(data.next.container);
          initScript();
          initLoader();
       },
       async leave(data) {
-         // animate loading screen in
          pageTransitionInDark(data.current);
          await delay(600);
          $("main, nav").removeClass('theme-nav-light');
@@ -434,7 +416,6 @@ function initPageTransitions() {
          data.current.container.remove();
       },
       async enter(data) {
-         // animate loading screen away
          pageTransitionOut(data.next);
          initBarbaNavUpdate(data);
          initNextWord(data);
@@ -462,11 +443,10 @@ function initPageTransitions() {
     ScrollTrigger.scrollerProxy('[data-scroll-container]', {
       scrollTop(value) {
         return arguments.length ? scroll.scrollTo(value, 0, 0) : scroll.scroll.instance.scroll.y;
-      }, // we don't have to define a scrollLeft because we're only scrolling vertically.
+      },
       getBoundingClientRect() {
         return {top: 0, left: 0, width: window.innerWidth, height: window.innerHeight};
       },
-      // LocomotiveScroll handles things completely differently on mobile devices - it doesn't even transform the container at all! So to get the correct behavior and avoid jitters, we should pin things with position: fixed on mobile. We sense it by checking to see if there's a transform applied to the container (the LocomotiveScroll-controlled element).
       pinType: container.querySelector('[data-scroll-container]').style.transform ? "transform" : "fixed"
     });
 
@@ -474,9 +454,6 @@ function initPageTransitions() {
       scroller: document.querySelector('[data-scroll-container]'),
     });
 
-    /**
-     * Remove Old Locomotive Scrollbar
-     */
 
     const scrollbar = selectAll('.c-scrollbar');
 
@@ -484,16 +461,13 @@ function initPageTransitions() {
       scrollbar[0].remove();
     }
 
-    // each time the window updates, we should refresh ScrollTrigger and then update LocomotiveScroll. 
     ScrollTrigger.addEventListener('refresh', () => scroll.update());
 
-    // after everything is set up, refresh() ScrollTrigger and update LocomotiveScroll because padding may have been added for pinning, etc.
     ScrollTrigger.refresh();
   }  
 }
 
 function initNextWord(data) {
-   // update Text Loading https://github.com/barbajs/barba/issues/507
    let parser = new DOMParser();
    let dom = parser.parseFromString(data.next.html, 'text/html');
    let nextProjects = dom.querySelector('.loading-words');
@@ -510,9 +484,6 @@ function delay(n) {
 }
 
 
-/**
-* Refresh Nav Fixed
-*/
 function initBarbaNavUpdate(data) {
 
    let parser = new DOMParser();
@@ -524,9 +495,6 @@ function initBarbaNavUpdate(data) {
    });
 }
 
-/**
-* Fire all scripts on page load
-*/
 function initScript() {
   initFlickitySlider();
   initSplitText();
@@ -547,9 +515,6 @@ function initScript() {
   initScrolltriggerAnimations();
 }
 
-/**
-* GSAP Split Text
-*/
 function initSplitText() {
 
    var splitTextLines = new SplitText(".split-lines", {type: "lines, chars", linesClass: "single-line"});
@@ -563,12 +528,8 @@ function initSplitText() {
  
  }
 
-/**
-* Window Inner Height Check
-*/
 function initWindowInnerheight() {
     
-  // https://css-tricks.com/the-trick-to-viewport-units-on-mobile/
   $(document).ready(function(){
     let vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
@@ -576,9 +537,7 @@ function initWindowInnerheight() {
 
 }
 
-/**
-* Check Scroll up or Down
-*/
+
 function initCheckScrollUpDown() {
 
    var lastScrollTop = 0
@@ -611,10 +570,6 @@ function initCheckScrollUpDown() {
       startCheckScroll();
    });
 }
-
-/**
-* Plugin Custom Contact Form Bearly Digital
-*/
 function initBearlyDigitalContactForm() {
 
    window.bearly.loadforms();
@@ -632,9 +587,6 @@ function initBearlyDigitalContactForm() {
 
 }
 
-/**
-* Check touch device
-*/
 function initCheckTouchDevice() {
     
   function isTouchScreendevice() {
@@ -660,9 +612,6 @@ function initCheckTouchDevice() {
 
 }
 
-/**
-* Hamburger Nav Open/Close
-*/
 function initBasicFunctions() {
     
    $(document).ready(function () {
@@ -701,13 +650,11 @@ function initBasicFunctions() {
       $("main, nav").removeClass('scroll-direction-down');
    });
 
-   // Cursor Text
    $('[data-cursor-text]').on('mouseenter', function() {
       let dataCursorText = $(this).data('cursor-text');
       $('.custom-cursor').find('.cursor-nav-inner h4').text(dataCursorText);
    });
 
-   // Background Color
    $('.single-work-item a, .single-news-item a, .work-single-related a').on('mouseenter', function() {
       var dataBackgroundColor = $(this).data('background-color');
       $('.data-change-color-main').css("background-color", dataBackgroundColor);
@@ -717,7 +664,6 @@ function initBasicFunctions() {
       $('.data-change-color-main').removeAttr("style");
    });
 
-   // Work Single Footer
    $('.work-single-related a').on('mouseenter', function() {
       $(this).addClass("hover");
    });
@@ -726,7 +672,6 @@ function initBasicFunctions() {
       $(this).removeClass("hover");
    });
 
-   // Find all Single Work Items and add class on hover
    $(".grid-hover").each(function () {
       var gridWork = $(this);
       gridWork.find('li a').on('mouseenter', function() {
@@ -738,8 +683,6 @@ function initBasicFunctions() {
       });
    });
    
-   // Accordion
-   // Found via https://codepen.io/michelgefuni/pen/wGEVjM
    $('[data-accordion-toggle]').click(function(){
       $('.bottom').not($(this).parent().find('.bottom')).slideUp(400, "swing");
       if ($(this).parent().attr('data-accordion-status') == 'active') {
@@ -766,7 +709,6 @@ function initBasicFunctions() {
       var toggle = $(this);
       var dataFilter = $(this).data('location-filter');
       if ($(this).hasClass('active')) {
-        // If active > Do nothing
       }
       else {
         $('.single-address-list.toggle-fade').addClass('toggle-fade-out');
@@ -785,7 +727,6 @@ function initBasicFunctions() {
       }
    });
 
-   // Questions
    $('[data-question-open]').click(function(){
       var questionTarget = $(this).data('question-open');
       $('[data-question-id="' + questionTarget + '"]').addClass('active').siblings().removeClass('active').addClass('not-active');
@@ -799,7 +740,6 @@ function initBasicFunctions() {
       $('[data-question-id]').removeClass('not-active');
    });
 
-   // Testimonials
    $('[data-testimonial-open]').click(function(){
       var testimonialTarget = $(this).data('testimonial-open');
       $('[data-testimonial-id="' + testimonialTarget + '"]').addClass('active').siblings().removeClass('active').addClass('not-active');
@@ -813,7 +753,6 @@ function initBasicFunctions() {
       $('[data-testimonial-id]').removeClass('not-active');
    });
 
-   // Team
    $('[data-team-open]').click(function(){
       var teamTarget = $(this).data('team-open');
       $('[data-team-id="' + teamTarget + '"]').addClass('active').siblings().removeClass('active').addClass('not-active');
@@ -831,9 +770,7 @@ function initBasicFunctions() {
       var toggle = $(this);
       var dataFilter = $(this).data('filter');
       if ($(this).hasClass('active')) {
-        // If active > Do nothing
       }
-      // All Filter
       else if (dataFilter === 'all') {
         $('.products-list.toggle-fade').addClass('toggle-fade-out');
         setTimeout(function() {
@@ -851,7 +788,6 @@ function initBasicFunctions() {
           scroll.update();
         }, 700);
       } 
-      // Cat. Filters
       else {
         $('.toggle-fade').addClass('toggle-fade-out');
         setTimeout(function() {
@@ -872,7 +808,6 @@ function initBasicFunctions() {
       }
    });
 
-   // Error effect
    if(document.querySelector(".error-header.data-change-color-section")) {
       
       document.querySelector(".data-change-color-secondary").animate(
@@ -886,26 +821,17 @@ function initBasicFunctions() {
        );
    }
 
-   // Play Work Related Video
    $('.work-single-related video').trigger('play');
          
 }
 
-/**
-* Lazy Load
-*/
 function initLazyLoad() {
-    // https://github.com/locomotivemtl/locomotive-scroll/issues/225
-    // https://github.com/verlok/vanilla-lazyload
     var lazyLoadInstance = new LazyLoad({ 
       elements_selector: ".lazy",
     });
 
 }
 
-/**
-* Play Video Inview
-*/
 function initPlayVideoInview() {
 
   let allVideoDivs = gsap.utils.toArray('.playpauze');
@@ -929,9 +855,6 @@ function initPlayVideoInview() {
   });
 }
 
-/**
- * Data Backgrounds Scroll
- */
  function initDataBackground() {
 
 
@@ -977,9 +900,6 @@ function initPlayVideoInview() {
 }
 
 
-/**
-* Cycle Images on Hover
-*/
 function initCycleImages() {
 
    $(".cycle-images-parent").each(function () {
@@ -1015,14 +935,7 @@ function initCycleImages() {
    });
 }
 
-/**
-* Marquee on Scroll
-*/
 function initMarqueeScroll() {
-   // Scrolling Letters Both Direction
-   // https://codepen.io/GreenSock/pen/rNjvgjo
-   // Fixed example with resizing
-   // https://codepen.io/GreenSock/pen/QWqoKBv?editors=0010
 
    if(document.querySelector(".marquee")) {
  
@@ -1041,14 +954,13 @@ function initMarqueeScroll() {
       }
    });
  
-   // helper function that clones the targets, places them next to the original, then animates the xPercent in a loop to make it appear to roll across the screen in a seamless loop.
    function roll(targets, vars, reverse) {
      vars = vars || {};
      vars.ease || (vars.ease = "none");
      const tl = gsap.timeline({
              repeat: -1,
              onReverseComplete() { 
-               this.totalTime(this.rawTime() + this.duration() * 10); // otherwise when the playhead gets back to the beginning, it'd stop. So push the playhead forward 10 iterations (it could be any number)
+               this.totalTime(this.rawTime() + this.duration() * 10);
              }
            }), 
            elements = gsap.utils.toArray(targets),
@@ -1061,10 +973,10 @@ function initMarqueeScroll() {
      positionClones();
      elements.forEach((el, i) => tl.to([el, clones[i]], {xPercent: reverse ? 100 : -100, ...vars}, 0));
      window.addEventListener("resize", () => {
-       let time = tl.totalTime(); // record the current time
-       tl.totalTime(0); // rewind and clear out the timeline
-       positionClones(); // reposition
-       tl.totalTime(time); // jump back to the proper time
+       let time = tl.totalTime();
+       tl.totalTime(0); 
+       positionClones();
+       tl.totalTime(time);
      });
      return tl;
    }
@@ -1072,13 +984,7 @@ function initMarqueeScroll() {
    }
 }
 
-/**
-* Sticky Cursor with Delay
-*/
 function initStickyCursorWithDelay() {
-    
-   // Sticky Cursor with delay
-   // https://greensock.com/forums/topic/21161-animated-mouse-cursor/
  
    var posXBtn = 0
    var posYBtn = 0
@@ -1127,7 +1033,6 @@ function initStickyCursorWithDelay() {
    });
    
  
-   // Mouse Init
    $('main').on('mousemove', function() {
      if ($(".custom-cursor").hasClass('cursor-init')) {
      } else {
@@ -1139,13 +1044,10 @@ function initStickyCursorWithDelay() {
       $(".custom-cursor").removeClass('cursor-init');
    });
  
-   // Normal Hover
    $('[data-cursor-text]').on('mouseenter', function() {
       let dataText = $(this).data('cursor-text');
-      // let dataBackgroundColor = $(this).data('background-color');
       $('.custom-cursor').addClass('cursor-hover');
       $('.custom-cursor').find('.cursor-text').text(dataText);
-      // $('.custom-cursor').find('.cursor-normal-before').css('background-color', dataBackgroundColor);
       $('.custom-cursor').find('.cursor-text').css("--cursor-speed", " " + dataText.length + "s");
 
    });
@@ -1153,7 +1055,6 @@ function initStickyCursorWithDelay() {
      $('.custom-cursor').removeClass('cursor-hover');
    });
 
-   // Link Hover
    $('a, .hover').on('mouseenter', function() {
      $('.custom-cursor').addClass('cursor-hover-link');
    });
@@ -1161,7 +1062,6 @@ function initStickyCursorWithDelay() {
      $('.custom-cursor').removeClass('cursor-hover-link');
    });
  
-   // Pressed
    $('main').on('mousedown', function() {
      $(".custom-cursor").addClass('pressed');
    });
@@ -1169,7 +1069,6 @@ function initStickyCursorWithDelay() {
      $(".custom-cursor").removeClass('pressed');
    });
 
-   // Mouse pos list image
    $('.mouse-pos-list-image-hover').on('mouseenter', function() {
       $('.mouse-pos-list-image').addClass('active');
    });
@@ -1187,10 +1086,6 @@ function initStickyCursorWithDelay() {
    
 }
 
-
-/**
-* Animate Loco on Scroll
-*/
 function initAnimateLocoOnScroll() {
   
    if(document.querySelector(".data-change-color-secondary")) {
@@ -1217,14 +1112,7 @@ barba.hooks.after(() => {
    initAnimateLocoOnScroll();
 });
 
-/**
-* Vimeo Player Embed
-*/
 function initVimeoPlayPauze() {
-
-
-   // Full controls
-   // https://codepen.io/simpson77/pen/YXowmy
 
    $('[data-vimeo-player-home-target]').each(function(index){
  
@@ -1239,25 +1127,21 @@ function initVimeoPlayPauze() {
       player.setVolume(0);
       playerID.attr('data-vimeo-status-activated', 'true');
 
-      // Loaded
       player.on('play', function() {
          playerID.attr('data-vimeo-status-loaded', 'true');
       });
 
-      // Play
       playerID.find('[data-vimeo-control="play"]').click(function(){
          playerID.attr('data-vimeo-status-activated', 'true');
          playerID.attr('data-vimeo-status-play', 'true');
          player.play();
       });
 
-      // Pause
       playerID.find('[data-vimeo-control="pause"]').click(function(){
          playerID.attr('data-vimeo-status-play', 'false');
          player.pause();
       });
 
-      // Mute
       playerID.find('[data-vimeo-control="mute"]').click(function(){
          if (playerID.attr('data-vimeo-status-muted') == 'false') {
             player.setVolume(0);
@@ -1268,32 +1152,26 @@ function initVimeoPlayPauze() {
          }
       });
  
-      // Convert number into seconds & hrs
-      // https://stackoverflow.com/questions/11792726/turn-seconds-into-hms-format-using-jquery
       function secondsTimeSpanToHMS(s) {
-         var h = Math.floor(s / 3600); //Get whole hours
+         var h = Math.floor(s / 3600);
          s -= h * 3600;
-         var m = Math.floor(s / 60); //Get remaining minutes
+         var m = Math.floor(s / 60);
          s -= m * 60;
-         return (m) + ":" + (s < 10 ? '0' + s : s); //zero padding on minutes and seconds
+         return (m) + ":" + (s < 10 ? '0' + s : s);
       }
 
-      // Progress Time
       var vimeoTime = playerID.find('.vimeo-duration .time');
       player.on('timeupdate', function(data) {
          vimeoTime.text(secondsTimeSpanToHMS(Math.trunc(data.seconds)));
       });
 
-      // Duration
 
       var vimeoDuration = playerID.find('.vimeo-duration .duration');
       player.getDuration().then(function(duration) {
          vimeoDuration.text(secondsTimeSpanToHMS(duration));
       }).catch(function(error) {
-         // an error occurred
       });
  
-      // Ended
       var onEnd = function() {
          playerID.attr('data-vimeo-status-activated', 'false');
          playerID.attr('data-vimeo-status-play', 'false');
@@ -1317,25 +1195,21 @@ function initVimeoPlayPauze() {
 
       player.setVolume(1);
 
-      // Loaded
       player.on('play', function() {
          playerID.attr('data-vimeo-status-loaded', 'true');
       });
 
-      // Play
       playerID.find('[data-vimeo-control="play"]').click(function(){
          playerID.attr('data-vimeo-status-activated', 'true');
          playerID.attr('data-vimeo-status-play', 'true');
          player.play();
       });
 
-      // Pause
       playerID.find('[data-vimeo-control="pause"]').click(function(){
          playerID.attr('data-vimeo-status-play', 'false');
          player.pause();
       });
 
-      // Mute
       playerID.find('[data-vimeo-control="mute"]').click(function(){
          if (playerID.attr('data-vimeo-status-muted') == 'false') {
             player.setVolume(0);
@@ -1346,32 +1220,25 @@ function initVimeoPlayPauze() {
          }
       });
  
-      // Convert number into seconds & hrs
-      // https://stackoverflow.com/questions/11792726/turn-seconds-into-hms-format-using-jquery
       function secondsTimeSpanToHMS(s) {
-         var h = Math.floor(s / 3600); //Get whole hours
+         var h = Math.floor(s / 3600);
          s -= h * 3600;
-         var m = Math.floor(s / 60); //Get remaining minutes
+         var m = Math.floor(s / 60); 
          s -= m * 60;
-         return (m) + ":" + (s < 10 ? '0' + s : s); //zero padding on minutes and seconds
+         return (m) + ":" + (s < 10 ? '0' + s : s);
       }
 
-      // Progress Time
       var vimeoTime = playerID.find('.vimeo-duration .time');
       player.on('timeupdate', function(data) {
          vimeoTime.text(secondsTimeSpanToHMS(Math.trunc(data.seconds)));
       });
 
-      // Duration
-
       var vimeoDuration = playerID.find('.vimeo-duration .duration');
       player.getDuration().then(function(duration) {
          vimeoDuration.text(secondsTimeSpanToHMS(duration));
       }).catch(function(error) {
-         // an error occurred
       });
  
-      // Ended
       var onEnd = function() {
          playerID.attr('data-vimeo-status-activated', 'false');
          playerID.attr('data-vimeo-status-play', 'false');
@@ -1383,15 +1250,8 @@ function initVimeoPlayPauze() {
    });
 }
 
-/**
-* Time Zone
-*/
 function initTimeZone() {
     
-   // Time zone
-   // https://stackoverflow.com/questions/39418405/making-a-live-clock-in-javascript/67149791#67149791
-   // https://stackoverflow.com/questions/8207655/get-time-of-specific-timezone
-   // https://stackoverflow.com/questions/63572780/how-to-update-intl-datetimeformat-with-new-date
 
    $('.single-time-zone .time-span').each(function(index){
 
@@ -1404,13 +1264,9 @@ function initTimeZone() {
       const optionsTime = {
          timeZone: timeZone,
          timeZoneName: 'short',
-         // year: 'numeric',
-         // month: 'numeric',
-         // day: 'numeric',
          hour: '2-digit',
          hour12: 'true',
          minute: 'numeric',
-         // second: 'numeric',
       };
 
       const formatter = new Intl.DateTimeFormat([], optionsTime);
@@ -1427,15 +1283,9 @@ function initTimeZone() {
 }
 
 
-/**
-* Flickity Slider
-*/
+
 function initFlickitySlider() {
 
-   // Source
-   // https://flickity.metafizzy.co/
-
-   // Slider Row
 
    $('.single-flickity-slider').each(function (index) {
 
@@ -1446,7 +1296,6 @@ function initFlickitySlider() {
 
       var flickitySliderMain = document.querySelector('#' + sliderIndexID + ' .flickity-carousel');
       var flickityMain = sliderThis.find('.flickity-carousel').flickity({
-         // options
          watchCSS: true,
          contain: true,
          wrapAround: false,
@@ -1471,29 +1320,24 @@ function initFlickitySlider() {
          }
       });
 
-      // Flickity instance
       var flkty = flickityMain.data('flickity');
 
-      // previous
       var prevButton = sliderThis.find('.flickity-btn-prev').on('click', function () {
          flickityMain.flickity('previous');;
       });
-      // next
       var nextButton = sliderThis.find('.flickity-btn-next').on('click', function () {
          flickityMain.flickity('next');
       });
 
-      // Get the amount of columns variable and use to calc last slide
       var inviewColumns = window.getComputedStyle(flickitySliderMain).getPropertyValue('--columns');
       function updatePagination() {
 
-         // enable/disable previous/next buttons
          if (!flkty.cells[flkty.selectedIndex - 1]) {
             prevButton.attr('disabled', 'disabled');
-            nextButton.removeAttr('disabled'); // <-- remove disabled from the next
+            nextButton.removeAttr('disabled');
          } else if (!flkty.cells[flkty.selectedIndex + parseInt(inviewColumns)]) {
             nextButton.attr('disabled', 'disabled');
-            prevButton.removeAttr('disabled'); //<-- remove disabled from the prev
+            prevButton.removeAttr('disabled');
          } else {
             prevButton.removeAttr('disabled');
             nextButton.removeAttr('disabled');
@@ -1503,9 +1347,6 @@ function initFlickitySlider() {
 
 }
 
-/**
- * ScrollTo Anchor Links
- */
 function initScrollToLoco() {
 
 
@@ -1522,32 +1363,15 @@ function initScrollToLoco() {
       }, 750);
    }
 
-//   if($(location).attr('search')) {
-//       var scrollTargetLink = $(location).attr('search');
-//       var scrollTargetLinkShort = scrollTargetLink.substring(scrollTargetLink.indexOf("=")+1);
-//       if (window.location.href.indexOf(scrollTargetLink) > -1) {
-//          setTimeout(function() {
-//             scroll.scrollTo('.' + scrollTargetLinkShort ,{
-//                'duration': 100,
-//                'easing':[1, 0, 0, 1],
-//                'disableLerp': false,
-//                'offset': 0,
-//             });
-//          }, 50);
-//       }
-//    }
 }
 
 
-/**
-* Scrolltrigger Animations Desktop + Mobile
-*/
+
 function initScrolltriggerAnimations() {
 
     
    if(document.querySelector(".address-bar")) {
 
-      // Scrolltrigger Animation : Example
       $(".address-bar").each(function (index) {
          let triggerElement = $(this);
          let targetElement = $(this);

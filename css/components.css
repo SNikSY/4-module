@@ -1,7 +1,3 @@
-/* ------------------------- Components ® Code by Dennis -------------------------------------------------- */
-
-/* ------------------------- Default Header -------------------------------------------------- */
-
 .default-header {
    padding-top: 30vh;
 }
@@ -32,7 +28,6 @@
 .frame{
    height: 45vw;
 }
-/* ------------------------- Split Words -------------------------------------------------- */
 
 .split-words-wrap .single-word {
    position: relative;
@@ -46,7 +41,6 @@
    transform: translateY(0) rotate(0.001deg);
 }
 
-/* ------------------------- Footer -------------------------------------------------- */
 
 .footer {
    background: var(--color-dark);
@@ -61,8 +55,6 @@
    left: 0;
    background: var(--color-dark); 
 }
-
-/* ------------------------- Row - Title -------------------------------------------------- */
 
 .row-title {
    position: relative;
@@ -89,7 +81,6 @@
    position: absolute;
 }
 
-/* ------------------------- Row - Title -------------------------------------------------- */
 
 .row-text-big {
    position: relative;
@@ -113,7 +104,6 @@
    }
 }
 
-/* ------------------------- Row - Split -------------------------------------------------- */
 
 .row-split {
    display: flex;
@@ -136,8 +126,6 @@
       --columns: 1;
    }
 }
-
-/* ------------------------- Modal -------------------------------------------------- */
 
 .modal {
    top: 0;
@@ -197,8 +185,6 @@
    }
 }
 
-/* ------------------------- Single - Vimeo Player -------------------------------------------------- */
-
 .single-vimeo-player {
    --aspect-ratio: 56.25%;
 	position: relative;
@@ -226,7 +212,6 @@
    cursor: pointer;
 }
 
-/* Placeholder */
 
 .single-vimeo-player .vimeo-overlay-placeholder {
 	background: var(--color-dark);
@@ -256,9 +241,6 @@
 }
 
 
-
-/* Overlay Dark */
-
 .single-vimeo-player .vimeo-overlay-dark {
 	background: var(--color-dark);
 	transition: opacity 0.3s ease-in-out;
@@ -285,8 +267,6 @@
       opacity: 0.3 !important;
    }
 }
-
-/* Interface */
 
 .single-vimeo-player .vimeo-overlay-interface {
    pointer-events: none;
@@ -357,8 +337,6 @@
    font-weight: 450;
 }
 
-/* Icon (Play + Pause) */
-
 .single-vimeo-player .icon {
    display: flex;
    align-items: center;
@@ -375,7 +353,6 @@
    width: 100%;
 }
 
-/* Play */
 
 .single-vimeo-player .vimeo-overlay-play {
 	z-index: 2;
@@ -393,8 +370,6 @@
 .single-vimeo-player .vimeo-overlay-play .icon svg path {
    fill: var(--color-light);
 }
-
-/* Pause */
 
 .single-vimeo-player .vimeo-overlay-pause {
 	z-index: 3;
@@ -427,7 +402,6 @@
    }
 }
 
-/*  Loading */
 
 .single-vimeo-player .vimeo-overlay-loading {
 	display: flex;
@@ -460,7 +434,6 @@
 	fill: var(--color-white);
 }
 
-/* Parallax */
 
 .has-scroll-smooth .vimeo-overlay-placeholder[data-scroll-speed="-1"] {
    height: calc(100% + 10vw);
@@ -486,8 +459,6 @@
       transform: scale(1.34);
    }
 }
-
-/* ------------------------- Icon Sprite -------------------------------------------------- */
 
 .icon-sprite {
    width: calc(var(--title-size) * 0.95);
@@ -535,8 +506,6 @@
    } 
 }
 
-
-/* ------------------------- Thumb -------------------------------------------------- */
 .thumb {
    position: relative;
    width: 100%;
@@ -576,9 +545,6 @@
    background-color: rgba(var(--color-light-rgb), 0.1);
 }
 
-
-/* Placeholder */
-
 .thumb .overlay-placeholder {
    display: flex;
    align-items: center;
@@ -599,7 +565,6 @@
    color: rgba(var(--color-light-rgb), 0.5);
 }
 
-/* Cycle */
 
 .thumb .cycle-images .single-image {
    opacity: 0;
@@ -609,7 +574,6 @@
    opacity: 1;
 }
 
-/* Parallax */
 
 .has-scroll-smooth .thumb .overlay-image img[data-scroll-speed="-3"] {
    height: calc(100% + 30vw);
@@ -638,8 +602,6 @@
    top: -10vw;
 }
 
-/* ------------------------- Single - Work -------------------------------------------------- */
-
 .single-work-item {
    width: 100%;
    position: relative;
@@ -658,7 +620,6 @@
 
 .single-work-item .tags span {
    color: rgba(var(--color-dark-rgb), 0.8);
-   /* font-size: 0.85em; */
    line-height: 1.2;
    font-weight: 450;
 }
@@ -753,27 +714,17 @@
    
    
 
-   /* Not Hover (Siblings) */
-
-   /* .grid-work:has(.single-work-item a:hover) .single-work-item a:not(:hover) {
-      opacity: 0.2;
-   } */
-
    .grid-hover .single-work-item.no-hover .item-click {
       opacity: 0.15;
       filter: grayscale(1) contrast(1);
       transform: scale(0.9) rotate(0.001deg);
    }
 
-   /* Data Change Color */
-
    .data-change-color-main {
       display: block;
    }
 
 }
-
-/* ------------------------- Single - Team -------------------------------------------------- */
 
 .single-team-item {
    width: 100%;
@@ -809,7 +760,6 @@
 
    .single-team-item .item-click:hover .thumb {
       border-radius: 50%;
-      /* border-radius: calc(var(--thumb-border-radius) * 2); */
    }
 
    .single-team-item .thumb .overlay-image {
@@ -818,8 +768,6 @@
    }
 
 }
-
-/* ------------------------- Single - Work -------------------------------------------------- */
 
 .single-news-item {
    width: 100%;
@@ -907,8 +855,6 @@
       display: none;
    }
 
-   /* Not Hover (Siblings) */
-
 
    .grid-hover .single-news-item.no-hover a {
       transform: scale(0.97) rotate(0.001deg);
@@ -940,8 +886,6 @@
       max-width: 100%;
    }
 }
-
-/* ------------------------- Single Testimonial Item -------------------------------------------------- */
 
 .single-testimonial-item {
    width: 100%;
@@ -1086,8 +1030,6 @@
    
 }
 
-/* ------------------------- Layout Wrapper -------------------------------------------------- */
-
 .single-layout {
    padding-top: 0;
 }
@@ -1147,8 +1089,6 @@ figure.single-image img {
    border-radius: calc(var(--border-radius) * 1);
 }
 
-/* Image - No Ratio */
-
 .has-scroll-smooth .single-layout figure .image-box.no-ratio img[data-scroll-speed="-0.5"],
 .has-scroll-smooth figure.single-image .image-box.no-ratio img[data-scroll-speed="-0.5"],
 .has-scroll-smooth .single-layout figure .image-box.no-ratio .video-box[data-scroll-speed="-0.5"],
@@ -1181,7 +1121,6 @@ figure.single-image img {
    margin-bottom: 0;
 }
 
-/* Image - Ratio */
 
 .single-layout figure .image-box.ratio img,
 .single-layout figure .image-box.ratio .video-box,
@@ -1205,8 +1144,6 @@ figure.single-image img {
    top: -5vh;
    height: calc(100% + 10vh);
 }
-
-/* Figcaption */
 
 .single-layout figure figcaption {
    color: var(--color-text);
@@ -1255,8 +1192,6 @@ figure.single-image img {
       border-radius: calc(var(--border-radius) * 0.5);
    }
 
-   /* Fix padding text mobile */
-
    .single-layout .flex-col:has(.block-type-heading) {
       margin-top: calc(var(--section-padding-small) * 0.5);
    }
@@ -1265,15 +1200,10 @@ figure.single-image img {
       margin-top: calc(var(--section-padding-small) * -0.5);
    }
 
-   /* Remove empty on mobile */
-
    .single-layout .flex-col:has(.column-empty) {
       display: none;
    }
 }
-
-
-/* ------------------------- Layout Button -------------------------------------------------- */
 
 .single-layout.theme-dark .btn {
    padding-top: 0;
@@ -1295,8 +1225,6 @@ figure.single-image img {
 .single-layout.theme-dark .btn .btn-duplicate-text {
    color: var(--color-dark);
 }
-
-/* ------------------------- Slider Row - 3 Col -------------------------------------------------- */
 
 .single-flickity-slider .flickity-carousel {
    display: flex;
@@ -1350,13 +1278,11 @@ figure.single-image img {
    overflow: visible;
 }
 
-/* Turn Flickity ON */
 .single-flickity-slider .flickity-carousel::after {
    content: "flickity";
    display: none;
 }
 
-/* Remove Flex from .row for Flickity */
 .single-flickity-slider .flickity-carousel {
    display: block;
 }

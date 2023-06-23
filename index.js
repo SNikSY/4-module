@@ -1,5 +1,4 @@
 (() => {
-  // src/Validator.js
   var Validator = class {
     rules = {};
     constructor(rules) {
@@ -75,7 +74,6 @@
     };
   };
 
-  // src/Field.js
   var Field = class {
     rules = [];
     form = void 0;
@@ -135,7 +133,6 @@
     }
   };
 
-  // src/ContactForm.js
   var ContactForm = class {
     fields = [];
     element = void 0;
