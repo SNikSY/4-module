@@ -1102,6 +1102,70 @@ main.touch .main-wrap {
 }
 
 
+
+-/* ------------------------- Social Icons -------------------------------------------------- */
+iframe{
+   width: 100%;
+   height: 50vw;
+}
+
+.d3{
+   width: 100%;
+   height: 111%;
+}
+
+.long {
+   height: 74vw;
+}
+@media screen and (max-width: 1024px) {
+   .long{
+      height: 160vw;
+   }
+}
+.s-icon {
+   position: relative;
+   overflow: hidden;
+   width: 1.75em;
+   height: 1.75em;
+   margin-right: .15em;
+   margin-left: .15em;
+   border-radius: 50%;
+   background-color: var(--color-light);
+   transition: 0.2s ease-in-out;
+   display: block;
+   float: left;
+}
+
+.s-icon .s-icon-wrap {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%) rotate(0.0001deg);
+   width: 65%;
+   transition: 0.2s ease-in-out;
+}
+
+.s-icon .s-icon-wrap svg {
+   display: block;
+   width: 100%;
+}
+
+.s-icon .s-icon-wrap svg path {
+   fill: var(--color-dark);
+   transition: 0.2s ease-in-out;
+}
+
+.s-icon:hover {
+   background: var(--color-dark);
+   cursor: pointer;
+}
+
+.s-icon:hover svg path {
+   fill: var(--color-light);
+}
+
+
+
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
